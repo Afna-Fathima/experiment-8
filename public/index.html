@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Training & Diet Planner - Plan Selector</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💪 Fitness Training & Diet Planner</h1>
+            <p class="subtitle">Choose your perfect fitness and diet plans</p>
+        </header>
+
+        <!-- User Profile Section -->
+        <section class="user-profile">
+            <div class="profile-card">
+                <h2>👤 Your Profile</h2>
+                <div class="profile-content">
+                    <div class="profile-field">
+                        <label>Name:</label>
+                        <input type="text" id="userName" placeholder="Enter your name" value="Fitness Enthusiast">
+                    </div>
+                    <div class="profile-field">
+                        <label>Your Level:</label>
+                        <select id="userLevel" title="Select your fitness experience level">
+                            <option value="">Select your experience level</option>
+                            <option value="Beginner">Beginner (New to fitness)</option>
+                            <option value="Intermediate">Intermediate (Training 3-6 months)</option>
+                            <option value="Advanced">Advanced (Training 1+ years)</option>
+                        </select>
+                    </div>
+                    <div class="profile-field">
+                        <label>Your Goal:</label>
+                        <select id="userGoal" title="Select your primary fitness goal">
+                            <option value="">Select your fitness goal</option>
+                            <option value="Muscle Gain">Muscle Gain (Build muscle mass)</option>
+                            <option value="Fat Loss">Fat Loss (Lose weight)</option>
+                            <option value="Maintenance">Maintenance (Stay fit)</option>
+                            <option value="Endurance">Endurance (Build stamina)</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="saveProfile()">Save Profile</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommended Plans Alert -->
+        <div id="recommendationAlert" class="alert alert-info alert-hidden">
+            <strong>💡 Recommendation:</strong> Based on your profile, we suggest plans matching your level and goals. Select one to get started!
+        </div>
+
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="trainings">🏋️ Training Plans</button>
+            <button class="tab-btn" data-tab="diets">🍽️ Diet Plans</button>
+            <button class="tab-btn" data-tab="myplans">⭐ My Selected Plans</button>
+        </nav>
+
+        <!-- Training Plans Tab -->
+        <div id="trainings" class="tab-content active">
+            <h2>🏋️ Training Plans</h2>
+            
+            <div class="filter-section">
+                <label>Filter by Level:</label>
+                <select id="difficultyFilter" title="Filter training plans by difficulty level">
+                    <option value="">All Levels</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+
+                <label>Filter by Category:</label>
+                <select id="categoryFilter" title="Filter training plans by category">
+                    <option value="">All Categories</option>
+                    <option value="Strength">Strength Training</option>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Flexibility">Flexibility</option>
+                    <option value="HIIT">HIIT</option>
+                    <option value="Specialty">Specialty</option>
+                </select>
+            </div>
+
+            <div id="trainingsList" class="plans-grid"></div>
+        </div>
+
+        <!-- Diet Plans Tab -->
+        <div id="diets" class="tab-content">
+            <h2>🍽️ Diet Plans</h2>
+
+            <div class="filter-section">
+                <label>Filter by Goal:</label>
+                <select id="goalFilter" title="Filter diet plans by fitness goal">
+                    <option value="">All Goals</option>
+                    <option value="Muscle Gain">Muscle Gain</option>
+                    <option value="Fat Loss">Fat Loss</option>
+                    <option value="Maintenance">Maintenance</option>
+                    <option value="Endurance">Endurance</option>
+                </select>
+            </div>
+
+            <div id="dietsList" class="plans-grid"></div>
+        </div>
+
+        <!-- My Selected Plans Tab -->
+        <div id="myplans" class="tab-content">
+            <h2>⭐ My Selected Plans</h2>
+            
+            <div id="myPlansContent">
+                <div class="empty-state">
+                    <p>No plans selected yet. Browse and select plans from the Training and Diet tabs to get started!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Plan Detail Modal -->
+        <div id="planModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closePlanModal()">&times;</span>
+                <div id="modalBody"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
